@@ -1,0 +1,27 @@
+.Login{
+    margin: auto;
+    vertical-align: middle;
+    top: 50%;
+    background-color: rgb(228, 117, 5,0.6);
+    padding: 8px;
+    transition: 0.3s;
+    border-radius: 4px;
+}
+
+
+.Login:hover{
+    margin: auto;
+    vertical-align: middle;
+    top: 50%;
+    background-color: rgb(228, 117, 5);
+    padding: 8px;
+
+    border-radius: 4px;
+}
+
+
+.AlignItems{
+    display: inline-block;
+    margin-right: 15px;
+    text-decoration: none;
+}
