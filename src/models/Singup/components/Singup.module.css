@@ -6,7 +6,6 @@
     padding: 8px;
     transition: 0.3s;
     border-radius: 4px;
-    text-align: center;
 }
 
 
@@ -25,4 +24,9 @@
     display: inline-block;
     margin-right: 15px;
     text-decoration: none;
+}
+
+.Error{
+    font-size: small;
+    color: brown;
 }
