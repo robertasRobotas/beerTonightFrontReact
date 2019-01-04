@@ -7,7 +7,6 @@ class Home extends Component {
 
     constructor() {
         super();
-
         this.changeStatus = this.changeStatus.bind(this);
     }
 
@@ -18,8 +17,6 @@ class Home extends Component {
     componentWillMount() {
 
         let token = localStorage.getItem('token');
-
-
 
         axios.get('https://beer-tonight.herokuapp.com/beer/getBeerStatus', {
             headers: {
@@ -34,8 +31,7 @@ class Home extends Component {
     }
 
 
-
-
+    
     changeStatus() {
 
         let token = localStorage.getItem('token');
@@ -49,9 +45,6 @@ class Home extends Component {
                 status: !this.state.status
             });
         });
-
-
-
     }
 
 

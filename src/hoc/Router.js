@@ -4,6 +4,7 @@ import styles from './Root.module.css';
 import Login from '../models/Login/Login';
 import Singup from '../models/Singup/Singup';
 import Home from '../models/Home/Home';
+import AllUsers from '../models/AllUsers/AllUsers';
 
 class Router extends Component{
 
@@ -14,6 +15,7 @@ class Router extends Component{
                 <Route path="/login" exact component={Login} />
                 <Route path="/singup" exact component={Singup} />
                 <Route path="/home" exact component={Home} />
+                <Route path="/allUsers" exact component={AllUsers} />
             </div>
         )
     }
