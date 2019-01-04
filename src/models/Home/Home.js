@@ -3,44 +3,71 @@ import styles from "./Home.module.css";
 import axios from 'axios';
 
 
-class Home extends Component{
+class Home extends Component {
 
-    constructor(){
+    constructor() {
         super();
 
         this.changeStatus = this.changeStatus.bind(this);
     }
 
-    state ={status: false};
+    state = {
+        status: Boolean
+    };
 
-   /* componentWillMount(){
-        axios.get('xxx').then(
-            result=>{
+    componentWillMount() {
 
-            })
+        let token = localStorage.getItem('token');
+
+
+
+        axios.get('https://beer-tonight.herokuapp.com/beer/getBeerStatus', {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        }).then((result)=>{
+
+            this.setState({
+                status : result.data.beerStatus
+            });
+        })
     }
-    */
-
-   changeStatus(){
-       this.setState({
-           status : !this.state.status
-       });
-   }
 
 
-    render(){
 
 
-       let beerStatus;
+    changeStatus() {
 
-       if(this.state.status){
-           beerStatus = 'true';
-       }else{
-           beerStatus = 'false';
-       }
+        let token = localStorage.getItem('token');
+
+        axios.get('https://beer-tonight.herokuapp.com/beer/changeBeerStatus', {
+           headers : {
+               Authorization : 'Bearer ' + token
+           }
+        }).then((result)=>{
+            this.setState({
+                status: !this.state.status
+            });
+        });
 
 
-        return(
+
+    }
+
+
+    render() {
+
+
+        let beerStatus;
+
+        if (this.state.status) {
+            beerStatus = 'true';
+        } else {
+            beerStatus = 'false';
+        }
+
+
+        return (
             <div className={styles.Login} onClick={this.changeStatus}>
                 {beerStatus}
 
