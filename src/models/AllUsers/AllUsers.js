@@ -22,30 +22,33 @@ class AllUsers extends Component {
             })
     }
 
+
+    sendFriendInvitation(){
+
+    }
+
     render() {
 
         let num =0;
         let users = this.state.allUsers.map(user => {
 
              num = num +1  ;
-            return(<Table key={user._id}>
+            return(<div key={user._id} className={styles.User} >
 
-                <tbody>
-                <tr>
-                    <td>{num}</td>
-                    <td>{user.name}</td>
-                    <td>{user.beerTonight ? ('true')
-                        : 'false'}</td>
-                </tr>
-                </tbody>
-            </Table>)
+                    <div className={styles.UserInfo} className={styles.Name} >{user.name}</div>
+                    <div className={styles.UserInfo} className={styles.Status}>{user.beerTonight ? ('true')
+                        : 'false'}</div>
+            </div>)
 
 
         });
 
         return (
-            <div className={styles.EntireList}>
+            <div>
+            <div className={styles.Description}>Press on friend to invite him</div>
+            <div className={styles.List}>
                 {users}
+            </div>
             </div>
         );
     }

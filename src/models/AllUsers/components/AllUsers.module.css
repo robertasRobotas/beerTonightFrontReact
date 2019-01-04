@@ -1,0 +1,21 @@
+.List{
+    margin: auto;
+    background-color: antiquewhite;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.User{
+    padding: 10px;
+}
+
+.User:hover{
+    background-color: orange;
+}
+
+.Description{
+    font-size: 10px;
+    background-color: antiquewhite;
+    text-align: center;
+}
+

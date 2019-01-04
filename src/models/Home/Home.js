@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styles from "./Home.module.css";
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 
 class Home extends Component {
@@ -22,25 +23,24 @@ class Home extends Component {
             headers: {
                 Authorization: 'Bearer ' + token
             }
-        }).then((result)=>{
+        }).then((result) => {
 
             this.setState({
-                status : result.data.beerStatus
+                status: result.data.beerStatus
             });
         })
     }
 
 
-    
     changeStatus() {
 
         let token = localStorage.getItem('token');
 
         axios.get('https://beer-tonight.herokuapp.com/beer/changeBeerStatus', {
-           headers : {
-               Authorization : 'Bearer ' + token
-           }
-        }).then((result)=>{
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        }).then((result) => {
             this.setState({
                 status: !this.state.status
             });
@@ -61,8 +61,16 @@ class Home extends Component {
 
 
         return (
-            <div className={styles.Login} onClick={this.changeStatus}>
-                {beerStatus}
+            <div>
+                <div className={styles.Login} onClick={this.changeStatus}>
+                    {beerStatus}
+                </div>
+                <div className={styles.Blank}></div>
+
+
+                <div className={styles.Link}>
+                <Link to='/allUsers'>See who Beer Tonight</Link>
+                </div>
 
             </div>
         )
