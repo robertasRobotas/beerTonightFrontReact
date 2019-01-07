@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import SingupForm from './components/singupForm';
 import axios from 'axios';
-
+import StatusLog from '../StatusLogs/StatusLog';
 
 class Singup extends Component {
 
@@ -21,7 +21,8 @@ class Singup extends Component {
         password: String,
         nameErrors: [],
         emailErrors: [],
-        passwordErrors: []
+        passwordErrors: [],
+        singupMessage : []
     };
 
     nameChange(event) {
@@ -53,7 +54,11 @@ class Singup extends Component {
         await this.checkEmailValidity();
         await this.checkPasswordValidity();
 
-        this.send();
+
+        if((this.state.nameErrors.length < 1) &&(this.state.emailErrors.length < 1) && (this.state.passwordErrors.length < 1)) {
+
+            this.send();
+        }
 
     }
 
@@ -97,7 +102,6 @@ class Singup extends Component {
             emailErrors: eErr
         });
 
-
     }
 
     checkPasswordValidity() {
@@ -120,7 +124,6 @@ class Singup extends Component {
 
     send(){
 
-        if((this.state.nameErrors.length < 1) &&(this.state.emailErrors.length < 1) && (this.state.passwordErrors.length < 1)){
 
             let singupInfo = {
                 name: this.state.name,
@@ -128,18 +131,29 @@ class Singup extends Component {
                 password: this.state.password
             };
 
+            let loginInfo = {
+                email: this.state.email,
+                password: this.state.password
+            };
+
             axios.post('https://beer-tonight.herokuapp.com/user/newUser', singupInfo)
-                .then((result)=>{
-                    if(result){
-                        console.log(result);
+                .then((SingupResult)=>{
+                    if(SingupResult){
+
+
+                        axios.post('https://beer-tonight.herokuapp.com/user/login', loginInfo)
+                            .then((loginResult)=>{
+                                if(loginResult){
+
+                                    this.props.history.push('/home');
+
+
+
+                                }
+                            })
+
                     }
                 })
-
-
-        }else{
-            console.log('bad');
-        }
-
 
 
     }

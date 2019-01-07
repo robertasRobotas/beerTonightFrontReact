@@ -53,7 +53,7 @@ class SingupForm extends Component{
                                     <Button type="submit" onClick={(e)=>this.props.onSubmit(e)}>SignUp!</Button>
                                 </div>
                                 <div className={styles.AlignItems}>
-                                    <Link to="/singup">Singup</Link>
+                                    <Link to="/login">Login</Link>
                                 </div>
 
                             </div>

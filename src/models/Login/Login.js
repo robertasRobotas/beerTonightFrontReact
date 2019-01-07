@@ -16,7 +16,8 @@ constructor(props){
 
     state = {
         email : String,
-        password : String
+        password : String,
+        error : String
     };
 
     emailChange(event) {
@@ -44,10 +45,14 @@ constructor(props){
             .then((result)=>{
 
                 localStorage.setItem('token', result.data.token);
-
                 this.props.history.push('/home')
 
-            })
+            }).catch(()=>{
+
+                this.setState({
+                    error : 'bad email or password'
+                });
+        })
     }
 
 
@@ -60,6 +65,7 @@ constructor(props){
                     emailChange={this.emailChange}
                     passwordChange={this.passwordChange}
                     onSubmit={this.onSubmit}
+                    error={this.state.error}
                 />
             </div>
         )

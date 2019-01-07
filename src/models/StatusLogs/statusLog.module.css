@@ -1,0 +1,28 @@
+.Background{
+    background-color: antiquewhite;
+    opacity: 0.85;
+    position: absolute;
+    width: 50%;
+    height: 40%;
+    top: 15%;
+}
+
+
+
+.Log{
+
+    text-align: center;
+    top : 30%;
+}
+
+
+.BlankSpace{
+
+    height: 60px;
+
+}
+
+
+.Button{
+    text-align:center
+}

@@ -26,7 +26,7 @@ class LoginForm extends Component{
                         <FormControl type="password" placeholder="Password" value={this.props.password} onChange={(event)=>this.props.passwordChange(event)} />
                     </Col>
                 </FormGroup>
-
+                <div className={styles.Error}>{this.props.error}</div>
                 <FormGroup>
                     <Col smOffset={2} sm={10}>
                         <Checkbox>Remember me</Checkbox>
