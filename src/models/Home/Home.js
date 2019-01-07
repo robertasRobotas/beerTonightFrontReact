@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import styles from "./Home.module.css";
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import StatusLog from '../StatusLogs/StatusLog';
+import UserCreated from '../UserCreated/UserCreated';
 import BeerStatusTrue from '../../components/assets/beerStatusPhoto/beerTrue.png';
 import BeerStatusFalse from '../../components/assets/beerStatusPhoto/beerFalse.png';
 
@@ -12,6 +12,7 @@ class Home extends Component {
     constructor() {
         super();
         this.changeStatus = this.changeStatus.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     state = {
@@ -34,7 +35,7 @@ class Home extends Component {
                 status: result.data.beerStatus
             });
         }).catch(()=>{
-            this.props.history.push('/login')
+            this.props.history.push('/login');
         })
     }
 
@@ -55,17 +56,20 @@ class Home extends Component {
     }
 
 
+    logout(){
+        localStorage.removeItem('token');
+        this.props.history.push('/login')
+
+    }
+
+
     render() {
-
-
-
 
 
         return (
             <div>
 
 
-                <StatusLog/>
 
                 <div className={styles.Login} onClick={this.changeStatus}>
                     {this.state.status ?
@@ -77,7 +81,19 @@ class Home extends Component {
                 <div className={styles.Blank}></div>
 
                 <div className={styles.Link}>
-                <Link to='/allUsers'>See who Beer Tonight</Link>
+
+                <Link to='/allUsers' style={{ textDecoration: 'none'}}>
+                    <div className={styles.Link}>
+                    See who Beer Tonight
+                    </div>
+                </Link>
+
+
+                    <div className={styles.Blank}></div>
+
+                    <div className={styles.Logout} onClick={this.logout}>
+                        logout
+                    </div>
                 </div>
 
             </div>

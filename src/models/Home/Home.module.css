@@ -34,10 +34,25 @@
 .Link{
     margin: auto;
     text-align: center;
+    text-decoration: none !important;
+}
+
+.Link:hover{
+    color: black;
 }
 
 img{
     height: 70px;
+}
+
+.Logout{
+    color: cornflowerblue;
+    cursor : pointer;
+    text-decoration:none;
+}
+
+.Logout:hover{
+    color: black;
 }
 
 

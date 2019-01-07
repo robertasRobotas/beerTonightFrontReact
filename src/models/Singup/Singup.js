@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import SingupForm from './components/singupForm';
 import axios from 'axios';
-import StatusLog from '../StatusLogs/StatusLog';
+import UserCreated from '../UserCreated/UserCreated';
 
 class Singup extends Component {
 
@@ -145,7 +145,7 @@ class Singup extends Component {
                             .then((loginResult)=>{
                                 if(loginResult){
 
-                                    this.props.history.push('/home');
+                                    this.props.history.push('/singupSucc');
 
 
 
